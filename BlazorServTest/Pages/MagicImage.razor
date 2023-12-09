@@ -1,35 +1,55 @@
 ﻿@page "/magicimage"
 
-<PageTitle>Counter</PageTitle>
+<PageTitle>Magic Tests</PageTitle>
 
-<h1>Random</h1>
-
-<p role="status">Current count: @currentCount</p>
-
-@* Просто тест методов событий*@
-<p><input type="checkbox" @onchange="(()=> IsHideImage = !IsHideImage)"/></p>
-
-<button class="btn btn-primary" @onclick="RandomImage">Click me</button>
-
-@if (!IsHideImage)
-{
-    <div>
-        <h3>
-            Капибара!
-        </h3>
+<div class="row">
+    <div class="col text-center">
+        <h1>Random</h1>
     </div>
-}
+</div>
+
+<div class="row">
+    <div class="col-6 text-start">
+        @* Просто тест методов событий, bind =  @onchange="(()=> IsHideImage = !IsHideImage)" *@
+        <p><input type="checkbox" @bind="IsHideImage"/>Капибара?</p>
+
+        @if (!IsHideImage)
+        {
+            <div>
+                <h3>
+                    Капибара!
+                </h3>
+            </div>
+        }
+
+        <button class="btn btn-primary p-3" @onclick="RandomImage">Click me</button>
+    </div>
+    <div class="col-6 text-end">
+        <div style="font-size: 50px">Current count: @currentCount</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center">
+        Max Count
+        <input type="number" class="form-control-lg " @bind="rndMax" />
+        @* bind => bind-value="" bind-value:event="" *@
+    </div>
+</div>
+
 
 @code {
     bool IsHideImage = true;
 
     private int currentCount = 0;
 
+    private int rndMax = 1;
+
     //Тут будет рандомная картинка :)
     private void RandomImage()
     {
         var rnd = new Random();
 
-        currentCount = rnd.Next(1,99);
+        currentCount = rnd.Next(1,rndMax);
     }
 }
