@@ -1,0 +1,23 @@
+﻿@if(!isTable)
+{
+    <div class="row text-center alert alert-info">
+        <div class="col">
+            <p>@HSkill.Name</p>
+            <p>@HSkill..Since.ToString("dd.MM.yyyy")</p>
+            <p>@HSkill.CurrentLevel</p>
+        </div>
+    </div>
+}else
+{
+    <tr>
+        <td>@HSkill.Name</td>
+        <td>@HSkill.Since.ToString("dd.MM.yyyy")</td>
+        <td>@HSkill.CurrentLevel</td>
+    </tr>
+}
+
+
+@code {
+    [Parameter] public HardSkills HSkill { get; set; } 
+    [Parameter] public bool isTable { get; set; }
+}

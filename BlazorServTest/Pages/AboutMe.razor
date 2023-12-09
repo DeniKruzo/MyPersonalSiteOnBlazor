@@ -12,8 +12,31 @@
     </div>
 </div>
 
-<ListHardSkills/>
+@* чек параметры *@
+<ListHardSkills MySkills="mySkills"/>
 
 @code{
-    private string Title { get; set; } = "ОБО МНЕ";
+    private string Title { get; set; } = "ABOUT ME";
+
+    List<HardSkills> mySkills;
+
+    protected override void OnInitialized()
+    {
+        //скоро будут грузиться с PostgreSQL
+        mySkills = new List<HardSkills>()
+        {
+            new HardSkills()
+            {
+                Name = "C#",
+                Since = new DateTime(2019,09,01),
+                CurrentLevel = "Junior"
+            },
+            new HardSkills()
+            {
+                Name = "SQL",
+                Since = new DateTime(2020,09,01),
+                CurrentLevel = "Junior"
+            },
+        };
+    }
 }

@@ -1,4 +1,4 @@
-﻿namespace BlazorServTest.Data.Models
+﻿namespace BlazorServTest.Models.Domains
 {
     public class HardSkills
     {

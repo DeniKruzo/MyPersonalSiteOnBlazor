@@ -1,0 +1,35 @@
+﻿@page "/magicimage"
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Random</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+@* Просто тест методов событий*@
+<p><input type="checkbox" @onchange="(()=> IsHideImage = !IsHideImage)"/></p>
+
+<button class="btn btn-primary" @onclick="RandomImage">Click me</button>
+
+@if (!IsHideImage)
+{
+    <div>
+        <h3>
+            Капибара!
+        </h3>
+    </div>
+}
+
+@code {
+    bool IsHideImage = true;
+
+    private int currentCount = 0;
+
+    //Тут будет рандомная картинка :)
+    private void RandomImage()
+    {
+        var rnd = new Random();
+
+        currentCount = rnd.Next(1,99);
+    }
+}
