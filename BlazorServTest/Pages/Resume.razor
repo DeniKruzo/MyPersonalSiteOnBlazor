@@ -15,10 +15,15 @@
 @* чек параметры *@
 <ListHardSkills MySkills="mySkills"/>
 
+<Skill HSkill="oneSkillToShow" isTable="false" isRandomSkill="true" SwitchSkill="ShowRndSkill"/>
+
 @code{
     private string Title { get; set; } = "My Resume";
 
     List<HardSkills> mySkills;
+
+    Random rnd;
+    HardSkills oneSkillToShow;
 
     protected override void OnInitialized()
     {
@@ -38,5 +43,34 @@
                 CurrentLevel = "Junior"
             },
         };
+
+        rnd = new Random(DateTime.Now.Microsecond);
+        oneSkillToShow = mySkills[rnd.Next(0, mySkills.Count)];
+    }
+
+    void ShowRndSkill()
+    {
+        oneSkillToShow = SwithcSkill();
+    }
+
+    HardSkills SwithcSkill()
+    {
+        HardSkills tempSkill;
+
+        if (mySkills.Count >= 2)
+        {
+            int i = rnd.Next(0, mySkills.Count);
+            tempSkill = mySkills[i];
+        }
+        else if (mySkills.Count == 1)
+        {
+            tempSkill = mySkills[0];
+        }
+        else
+        {
+            return new HardSkills() {Since = DateTime.Now };
+        }
+
+        return tempSkill;
     }
 }
