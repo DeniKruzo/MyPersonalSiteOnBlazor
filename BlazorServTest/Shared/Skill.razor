@@ -1,4 +1,4 @@
-﻿@if(!isTable)
+﻿@if(!isTable && HSkill != null)
 {
     <div class="row text-center alert alert-info">
         <div class="col">
@@ -14,11 +14,14 @@
     }
 }else
 {
-    <tr>
-        <td>@HSkill.Name</td>
-        <td>@HSkill.Since.ToString("dd.MM.yyyy")</td>
-        <td>@HSkill.CurrentLevel</td>
-    </tr>
+    if (HSkill != null)
+    {
+        <tr>
+            <td>@HSkill.Name</td>
+            <td>@HSkill.Since.ToString("dd.MM.yyyy")</td>
+            <td>@HSkill.CurrentLevel</td>
+        </tr>
+    }
 }
 
 

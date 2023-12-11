@@ -13,14 +13,7 @@
 </div>
 
 @* чек параметры *@
-<ListHardSkills MySkills="mySkills">
-    <LoadContent>
-        <img src="https://cdn.dribbble.com/users/1186261/screenshots/3718681/_______.gif" height="200" />
-    </LoadContent>
-    <EmptyContent>
-        <tr>NO CONTENT: Data is Empty.</tr>
-    </EmptyContent>
-</ListHardSkills>
+<ListHardSkills MySkills="mySkills" />
 
 <Skill HSkill="oneSkillToShow" isTable="false" isRandomSkill="true" SwitchSkill="ShowRndSkill"/>
 
@@ -32,8 +25,10 @@
     Random rnd;
     HardSkills oneSkillToShow;
 
-    protected override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
+        await Task.Delay(3000);
+
         //скоро будут грузиться с PostgreSQL
         mySkills = new List<HardSkills>()
         {

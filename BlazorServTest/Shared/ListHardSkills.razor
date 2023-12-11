@@ -8,20 +8,11 @@
             </tr>
         </thead>
         <tbody>
-            @if (MySkills == null)
-            {
-                @LoadContent
-            }
-            else if(MySkills.Count == 0)
-            {
-                @EmptyContent
-            }else
-            {
-                @foreach (var item in MySkills)
-                {
-                    <Skill HSkill="item" isTable="true" />
-                }
-            }
+           <GenericList ListItems="MySkills" Context="skil">
+               <ItemTemplate>
+                   <Skill HSkill="skil" isTable="true"/>
+               </ItemTemplate>
+           </GenericList>
         </tbody>
     </table>
 </div>
@@ -30,9 +21,4 @@
     [Parameter]
     public List<HardSkills> MySkills { get; set; }
 
-    [Parameter]
-    public RenderFragment LoadContent { get; set; }
-
-    [Parameter]
-    public RenderFragment EmptyContent { get; set; }
 }

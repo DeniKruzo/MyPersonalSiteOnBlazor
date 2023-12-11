@@ -1,0 +1,26 @@
+﻿@typeparam TItem
+
+@if (ListItems == null)
+{
+    <img src="https://cdn.dribbble.com/users/1186261/screenshots/3718681/_______.gif" height="200" />
+}
+else if (ListItems.Count == 0)
+{
+    <h2>No Data...</h2>
+}
+else
+{
+    @foreach (var item in ListItems)
+    {
+        @ItemTemplate(item)
+    }
+}
+
+@code 
+{
+    [Parameter]
+    public RenderFragment<TItem> ItemTemplate { get; set; }
+
+    [Parameter]
+    public List<TItem> ListItems { get; set; }
+}
