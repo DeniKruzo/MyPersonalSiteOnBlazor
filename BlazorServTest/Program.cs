@@ -1,5 +1,7 @@
+using BlazorServTest.Abstract;
 using BlazorServTest.Areas.Identity;
 using BlazorServTest.Data;
+using BlazorServTest.Repositories.Mocks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
@@ -19,6 +21,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+
+builder.Services.AddTransient<IHaveSkills, MockSkills>();
 
 var app = builder.Build();
 
