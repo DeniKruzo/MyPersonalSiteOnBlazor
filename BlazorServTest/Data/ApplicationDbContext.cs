@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using BlazorServTest.Models.Domains;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlazorServTest.Data
@@ -9,5 +10,7 @@ namespace BlazorServTest.Data
             : base(options)
         {
         }
+
+        public DbSet<HardSkills> hardSkills { get; set; }
     }
 }
